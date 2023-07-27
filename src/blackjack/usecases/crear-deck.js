@@ -1,8 +1,19 @@
 import _ from 'underscore';
 
-export const miNombre = 'Jhusep';
 
+/**
+ * Esta función crea un nuevo deck
+ * @param {Array<String>} tiposDeCartas Ejemplo: ['C','D','H','S'];
+ * @param {Array<String>} tiposEspeciales Ejemplo: ['A','J','Q','K'];
+ * @returns {Array<String>} retorna un nuevo deck de cartas
+ */
 export const crearDeck = ( tiposDeCartas, tiposEspeciales ) => {
+
+    if( !tiposDeCartas || tiposDeCartas.length === 0 ) 
+        throw new Error('TiposDeCarta es obligatorio como un arreglo de string');
+    
+    if( !tiposEspeciales || tiposDeCartas.length === 0 ) 
+        throw new Error('TiposEspeciales es obligatorio como un arreglo de string');
 
     let deck = [];
 
