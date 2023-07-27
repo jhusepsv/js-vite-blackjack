@@ -1,6 +1,6 @@
 import _ from 'underscore'; 
 // import { crearDeck as crearNuevoDeck } from './usecases/crear-deck'; //se puede asignar un aliar para trabajar en este documento
-import { crearDeck, pedirCarta, turnoComputadora, valorCarta } from './usecases';
+import { crearCartaHTML, crearDeck, pedirCarta, turnoComputadora, valorCarta } from './usecases';
 
 
 /**
@@ -9,7 +9,6 @@ import { crearDeck, pedirCarta, turnoComputadora, valorCarta } from './usecases'
  * 2H = Two of Hearts
  * 2S = Two of Spades
  */
-
 let deck         = [];
 const tipos      = ['C','D','H','S'];
 const especiales = ['A','J','Q','K'];
@@ -28,10 +27,7 @@ const divCartasComputadora = document.querySelector('#computadora-cartas');
 const puntosHTML = document.querySelectorAll('small');
 
 
-
 deck = crearDeck( tipos, especiales );
-
-
 
 
 // Eventos
@@ -42,10 +38,7 @@ btnPedir.addEventListener('click', () => {
     puntosJugador = puntosJugador + valorCarta( carta );
     puntosHTML[0].innerText = puntosJugador;
     
-    // <img class="carta" src="assets/cartas/2C.png">
-    const imgCarta = document.createElement('img');
-    imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
-    imgCarta.classList.add('carta');
+    const imgCarta = crearCartaHTML( carta );
     divCartasJugador.append( imgCarta );
 
     if ( puntosJugador > 21 ) {
